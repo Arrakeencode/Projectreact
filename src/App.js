@@ -1,13 +1,25 @@
-import './App.css';
-import Create from './components/Create';
-import Read from './components/Read';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Users from "./pages/Users";
+import Salaire from "./pages/Salaire";
+import Cong from "./pages/Cong";
+import Layout from "./pages/Layout";
+
 
 function App() {
   return (
-    <div className="App">
-      <Create></Create>
-     <Read></Read>
-    </div>
+      <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<Layout />}>
+
+                  <Route path="users" element={<Users />} />
+                  <Route path="salaire" element={<Salaire />} />
+                  <Route path="cong" element={<Cong />} />
+
+              </Route>
+          </Routes>
+
+
+      </BrowserRouter>
   );
 }
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-export default class Read extends React.Component{
+export default class ReadUser extends React.Component{
   state = {
   users: []
   }
   componentDidMount() {
-    axios.get(`https://632c23401aabd83739943ca8.mockapi.io/utilisateurs/`)
+    axios.get(`https://632c531a5568d3cad882dae9.mockapi.io/Employe/`)
     .then(res => {
     const users = res.data;
     this.setState({ users });
@@ -14,7 +14,7 @@ export default class Read extends React.Component{
     }
     deleteRow(id, e){
       
-      axios.delete(`https://632c23401aabd83739943ca8.mockapi.io/utilisateurs/${id}`)
+      axios.delete(`https://632c531a5568d3cad882dae9.mockapi.io/Employe/${id}`)
       .then(res => {
       console.log(res);
       console.log(res.data);
@@ -25,27 +25,31 @@ export default class Read extends React.Component{
     render() {
       return(
         <>
-        <h2 className="text-center">Axios Read/delete users</h2>
+        <h2 className="text-center">Employé</h2>
         <table className="table table-bordered">
 <thead>
 <tr>
-<th>ID</th>
-<th>Nom</th>
-<th>Prenom</th>
-<th>Email</th>
-<th>Action</th>
+  <th>ID</th>
+  <th>Nom</th>
+  <th>Prenom</th>
+  <th>Age</th>
+  <th>Grade</th>
+  <th>Adresse</th>
+  <th>Action</th>
 </tr>
 </thead>
 <tbody>
 {this.state.users.map((user) => (
 <tr>
-<td>{user.id}</td>
-<td>{user.nom}</td>
-<td>{user.prenom}</td>
-<td>{user.email}</td>
-<td>
-<button className="btn btn-danger" onClick={(e) => this.deleteRow(user.id, e)}>Delete</button>
-</td>
+  <td>{user.id}</td>
+  <td>{user.nom}</td>
+  <td>{user.prenom}</td>
+  <td>{user.age}</td>
+  <td>{user.grade}</td>
+  <td>{user.adresse}</td>
+  <td>
+    <button className="btn btn-danger" onClick={(e) => this.deleteRow(user.id, e)}>Delete</button>
+  </td>
 </tr>
 ))}
 </tbody>
